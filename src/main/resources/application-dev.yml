@@ -1,0 +1,22 @@
+# Dev profile - uses environment variables, NO hardcoded credentials
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/leaddb}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+
+  jpa:
+    show-sql: true
+
+  cloud:
+    aws:
+      region:
+        static: ${AWS_REGION:ap-south-1}
+
+app:
+  sns:
+    topic-arn: ${SNS_TOPIC_ARN:arn:aws:sns:ap-south-1:000000000000:lead-created-topic}
+
+logging:
+  level:
+    com.leadplatform: DEBUG
